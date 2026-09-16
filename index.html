@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDYC - Przychnia Medyczna</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <span class="logo-icon">🏥</span>
+                    <span class="logo-text">MEDYC</span>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-section="pacjenci">
+                    <span class="icon">👥</span> PACJENCI
+                </button>
+                <button class="nav-btn" data-section="lekarze">
+                    <span class="icon">👨‍⚕️</span> LEKARZE
+                </button>
+                <button class="nav-btn" data-section="rejestracja">
+                    <span class="icon">📅</span> REJESTRACJA
+                </button>
+                <button class="nav-btn" data-section="dokumentacja">
+                    <span class="icon">📋</span> DOKUMENTACJA
+                </button>
+                <button class="nav-btn" data-section="administracja">
+                    <span class="icon">⚙️</span> ADMINISTRACJA
+                </button>
+            </nav>
+            <div class="header-right">
+                <span class="user-info">Demo Medyc</span>
+                <span class="logout-btn">Wyloguj</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- PACJENCI Section -->
+            <section id="pacjenci" class="content-section active">
+                <div class="section-header">
+                    <h1>Pacjenci</h1>
+                </div>
+                <div class="section-content">
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="btn-dodaj-pacjenta">+ Dodaj pacjenta</button>
+                        <button class="btn btn-secondary" id="btn-edytuj-pacjenta">✏️ Edytuj</button>
+                        <button class="btn btn-secondary" id="btn-usuń-pacjenta">🗑️ Usuń</button>
+                        <button class="btn btn-secondary" id="btn-kartoteka">📁 Kartoteka</button>
+                    </div>
+
+                    <div class="search-bar">
+                        <input type="text" id="search-pacjent" placeholder="Wyszukaj pacjenta...">
+                        <span class="search-icon">🔍</span>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>PEŁNA NAZWA</th>
+                                <th>TELEFON</th>
+                                <th>EMAIL</th>
+                                <th>PESEL</th>
+                                <th>DATA URODZENIA</th>
+                                <th>AKCJE</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pacjenci-table-body">
+                            <tr>
+                                <td>Łubajn Radosław</td>
+                                <td>599123321</td>
+                                <td>rachel@gmail.com</td>
+                                <td>64112296817</td>
+                                <td>1985-03-15</td>
+                                <td class="actions">
+                                    <button class="action-btn edit">✏️</button>
+                                    <button class="action-btn delete">🗑️</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- LEKARZE Section -->
+            <section id="lekarze" class="content-section">
+                <div class="section-header">
+                    <h1>Lekarze</h1>
+                </div>
+                <div class="section-content">
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="btn-dodaj-lekarza">+ Dodaj lekarza</button>
+                        <button class="btn btn-secondary" id="btn-edytuj-lekarza">✏️ Edytuj</button>
+                        <button class="btn btn-secondary" id="btn-usuń-lekarza">🗑️ Usuń</button>
+                    </div>
+
+                    <div class="search-bar">
+                        <input type="text" id="search-lekarz" placeholder="Wyszukaj lekarza...">
+                        <span class="search-icon">🔍</span>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>IMIĘ I NAZWISKO</th>
+                                <th>SPECJALIZACJA</th>
+                                <th>TELEFON</th>
+                                <th>EMAIL</th>
+                                <th>GABINET</th>
+                                <th>AKCJE</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lekarze-table-body">
+                            <tr>
+                                <td>Dr. Burnicka Łukasz</td>
+                                <td>Kardiologia</td>
+                                <td>600123456</td>
+                                <td>lukasz.burnicka@medyc.pl</td>
+                                <td>Gabinet 5</td>
+                                <td class="actions">
+                                    <button class="action-btn edit">✏️</button>
+                                    <button class="action-btn delete">🗑️</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Dr. Orczełeska Martyna</td>
+                                <td>Dermatologia</td>
+                                <td>600654321</td>
+                                <td>martyna.orczeleska@medyc.pl</td>
+                                <td>Gabinet 3</td>
+                                <td class="actions">
+                                    <button class="action-btn edit">✏️</button>
+                                    <button class="action-btn delete">🗑️</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- REJESTRACJA Section -->
+            <section id="rejestracja" class="content-section">
+                <div class="section-header">
+                    <h1>Rejestracja Wizyt</h1>
+                </div>
+                <div class="section-content">
+                    <div class="calendar-container">
+                        <div class="calendar-sidebar">
+                            <div class="calendar-month">
+                                <h3 id="current-month">Wrzesień 2024</h3>
+                                <div class="calendar-mini" id="calendar-mini"></div>
+                            </div>
+                            <div class="filters">
+                                <h4>Filtry</h4>
+                                <div class="filter-group">
+                                    <label>Lekarz:</label>
+                                    <select id="filter-lekarz">
+                                        <option value="">-- Wszyscy lekarze --</option>
+                                        <option value="burnicka">Dr. Burnicka Łukasz</option>
+                                        <option value="orczeleska">Dr. Orczełeska Martyna</option>
+                                    </select>
+                                </div>
+                                <div class="filter-group">
+                                    <label>Typ wizyty:</label>
+                                    <select id="filter-typ">
+                                        <option value="">-- Wszystkie --</option>
+                                        <option value="konsultacja">Konsultacja</option>
+                                        <option value="badanie">Badanie</option>
+                                        <option value="procedura">Procedura</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="calendar-main">
+                            <div class="calendar-header">
+                                <button class="nav-prev">◀</button>
+                                <h2 id="calendar-title">Wrzesień 2024</h2>
+                                <button class="nav-next">▶</button>
+                            </div>
+
+                            <div class="calendar-grid">
+                                <div class="day-header">PON</div>
+                                <div class="day-header">WT</div>
+                                <div class="day-header">ŚR</div>
+                                <div class="day-header">CZW</div>
+                                <div class="day-header">PT</div>
+                                <div class="day-header">SO</div>
+                                <div class="day-header">ND</div>
+
+                                <div class="calendar-day">
+                                    <div class="day-number">5</div>
+                                    <div class="appointments">
+                                        <div class="appointment">09:15 - Łubajn Radosław</div>
+                                    </div>
+                                </div>
+                                <div class="calendar-day">
+                                    <div class="day-number">6</div>
+                                </div>
+                                <div class="calendar-day">
+                                    <div class="day-number">7</div>
+                                </div>
+                                <div class="calendar-day">
+                                    <div class="day-number">8</div>
+                                </div>
+                                <div class="calendar-day">
+                                    <div class="day-number">9</div>
+                                </div>
+                                <div class="calendar-day">
+                                    <div class="day-number">10</div>
+                                </div>
+                                <div class="calendar-day">
+                                    <div class="day-number">11</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="appointment-details">
+                        <h3>Szczegóły wizyty</h3>
+                        <form id="appointment-form">
+                            <div class="form-group">
+                                <label>Pacjent *</label>
+                                <select id="appointment-pacient" required>
+                                    <option value="">-- Wybierz pacjenta --</option>
+                                    <option value="radoslaw">Łubajn Radosław</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Data *</label>
+                                <input type="date" id="appointment-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Godzina *</label>
+                                <input type="time" id="appointment-time" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Lekarz *</label>
+                                <select id="appointment-doctor" required>
+                                    <option value="">-- Wybierz lekarza --</option>
+                                    <option value="burnicka">Dr. Burnicka Łukasz</option>
+                                    <option value="orczeleska">Dr. Orczełeska Martyna</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Typ wizyty *</label>
+                                <select id="appointment-type" required>
+                                    <option value="">-- Wybierz typ --</option>
+                                    <option value="konsultacja">Konsultacja</option>
+                                    <option value="badanie">Badanie</option>
+                                    <option value="procedura">Procedura</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Notatki</label>
+                                <textarea id="appointment-notes" rows="3"></textarea>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="submit" class="btn btn-primary">Zapisz wizytę</button>
+                                <button type="reset" class="btn btn-secondary">Anuluj</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DOKUMENTACJA Section -->
+            <section id="dokumentacja" class="content-section">
+                <div class="section-header">
+                    <h1>Dokumentacja Medyczna (HL7-CDA)</h1>
+                </div>
+                <div class="section-content">
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="btn-nowy-dokument">+ Nowy dokument</button>
+                        <button class="btn btn-secondary" id="btn-pobierz-cda">📥 Pobierz CDA</button>
+                        <button class="btn btn-secondary" id="btn-drukuj-dokument">🖨️ Drukuj</button>
+                    </div>
+
+                    <div class="document-form">
+                        <h3>Nowy dokument HL7-CDA</h3>
+                        <form id="document-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Pacjent *</label>
+                                    <select id="doc-pacient" required>
+                                        <option value="">-- Wybierz pacjenta --</option>
+                                        <option value="radoslaw">Łubajn Radosław</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Lekarz *</label>
+                                    <select id="doc-doctor" required>
+                                        <option value="">-- Wybierz lekarza --</option>
+                                        <option value="burnicka">Dr. Burnicka Łukasz</option>
+                                        <option value="orczeleska">Dr. Orczełeska Martyna</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Typ dokumentu *</label>
+                                    <select id="doc-type" required>
+                                        <option value="">-- Wybierz typ --</option>
+                                        <option value="history">Historia choroby</option>
+                                        <option value="referral">Skierowanie</option>
+                                        <option value="prescription">Recepta</option>
+                                        <option value="test">Wynik badania</option>
+                                        <option value="report">Raport medyczny</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Data dokumentu *</label>
+                                    <input type="date" id="doc-date" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Tytuł dokumentu *</label>
+                                <input type="text" id="doc-title" placeholder="Wpisz tytuł" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Zawartość dokumentu *</label>
+                                <textarea id="doc-content" rows="6" placeholder="Zawartość medyczna..." required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Diagnoza (ICD-10)</label>
+                                <input type="text" id="doc-diagnosis" placeholder="np. I10 - Nadciśnienie">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Leczenie/Zalecenia</label>
+                                <textarea id="doc-treatment" rows="3" placeholder="Zalecane leczenie..."></textarea>
+                            </div>
+
+                            <div class="form-buttons">
+                                <button type="submit" class="btn btn-primary">Utwórz dokument CDA</button>
+                                <button type="reset" class="btn btn-secondary">Wyczyść formularz</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="documents-list">
+                        <h3>Ostatnie dokumenty</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>DATA</th>
+                                    <th>TYP</th>
+                                    <th>PACJENT</th>
+                                    <th>LEKARZ</th>
+                                    <th>TYTUŁ</th>
+                                    <th>AKCJE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="documents-table-body">
+                                <!-- Dynamicznie dodawane dokumenty -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ADMINISTRACJA Section -->
+            <section id="administracja" class="content-section">
+                <div class="section-header">
+                    <h1>Administracja</h1>
+                </div>
+                <div class="section-content">
+                    <div class="admin-tabs">
+                        <button class="admin-tab-btn active" data-tab="settings">⚙️ Ustawienia</button>
+                        <button class="admin-tab-btn" data-tab="users">👥 Użytkownicy</button>
+                        <button class="admin-tab-btn" data-tab="backup">💾 Kopia zapasowa</button>
+                        <button class="admin-tab-btn" data-tab="logs">📊 Logi</button>
+                    </div>
+
+                    <div class="admin-tab-content active" id="tab-settings">
+                        <h3>Ustawienia przychodni</h3>
+                        <form id="settings-form">
+                            <div class="form-group">
+                                <label>Nazwa przychodni</label>
+                                <input type="text" value="Przychnia MEDYC" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Adres</label>
+                                <input type="text" value="ul. Medyczna 1, 00-001 Warszawa">
+                            </div>
+                            <div class="form-group">
+                                <label>Telefon</label>
+                                <input type="tel" value="+48 22 123 45 67">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" value="kontakt@medyc.pl">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Zapisz ustawienia</button>
+                        </form>
+                    </div>
+
+                    <div class="admin-tab-content" id="tab-users">
+                        <h3>Zarządzanie użytkownikami</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>LOGIN</th>
+                                    <th>ROLA</th>
+                                    <th>OSTATNIA AKTYWNOŚĆ</th>
+                                    <th>AKCJE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>admin</td>
+                                    <td>Administrator</td>
+                                    <td>2024-09-16 10:30</td>
+                                    <td><button class="btn btn-secondary btn-sm">Edytuj</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="admin-tab-content" id="tab-backup">
+                        <h3>Kopia zapasowa</h3>
+                        <button class="btn btn-primary">💾 Utwórz kopię zapasową</button>
+                        <p>Ostatnia kopia: 2024-09-16 08:00</p>
+                    </div>
+
+                    <div class="admin-tab-content" id="tab-logs">
+                        <h3>Logi systemowe</h3>
+                        <div class="logs-viewer" id="logs-viewer">
+                            <p>[2024-09-16 10:30] Użytkownik admin zalogował się</p>
+                            <p>[2024-09-16 10:25] Nowy pacjent dodany: Łubajn Radosław</p>
+                            <p>[2024-09-16 10:20] Wizyta zapisana: 2024-09-06 09:15</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for adding patient -->
+    <div id="modal-pacjent" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Dodaj pacjenta</h2>
+            <form id="form-pacjent">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Imię *</label>
+                        <input type="text" id="pacjent-imie" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nazwisko *</label>
+                        <input type="text" id="pacjent-nazwisko" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>PESEL *</label>
+                        <input type="text" id="pacjent-pesel" maxlength="11" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Data urodzenia *</label>
+                        <input type="date" id="pacjent-data-ur" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Telefon *</label>
+                        <input type="tel" id="pacjent-telefon" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" id="pacjent-email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Adres</label>
+                    <textarea id="pacjent-adres" rows="2"></textarea>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary">Zapisz pacjenta</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('modal-pacjent')">Anuluj</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
